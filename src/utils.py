@@ -4,6 +4,9 @@ def validate_cpf(cpf):
     if not re.match(r"^\d{11}$", cpf):
         return False
 
+    if cpf == cpf[0] * len(cpf):
+        return False
+
     def calculate_digit(digits, multipliers):
         soma = sum(int(digit) * multiplier for digit, multiplier in zip(digits, multipliers))
         resto = soma % 11
